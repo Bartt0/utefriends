@@ -1,0 +1,183 @@
+
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Red Social Utefriend</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/logo/favicon.ico">
+    
+    <!-- CSS
+        ============================================ -->
+        <!-- google fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900" rel="stylesheet">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+        <!-- Icon Font CSS -->
+        <link rel="stylesheet" href="assets/css/vendor/bicon.min.css">
+        <!-- Flat Icon CSS -->
+        <link rel="stylesheet" href="assets/css/vendor/flaticon.css">
+        <!-- audio & video player CSS -->
+        <link rel="stylesheet" href="assets/css/plugins/plyr.css">
+        <!-- Slick CSS -->
+        <link rel="stylesheet" href="assets/css/plugins/slick.min.css">
+        <!-- nice-select CSS -->
+        <link rel="stylesheet" href="assets/css/plugins/nice-select.css">
+        <!-- perfect scrollbar css -->
+        <link rel="stylesheet" href="assets/css/plugins/perfect-scrollbar.css">
+        <!-- light gallery css -->
+        <link rel="stylesheet" href="assets/css/plugins/lightgallery.min.css">
+        <!-- Main Style CSS -->
+        <link rel="stylesheet" href="assets/css/style.css">
+        
+    </head>
+    
+    <body class="bg-transparent">
+        
+        <pre id="displays"></pre>
+        
+        <main>
+            <div class="main-wrapper pb-0 mb-0">
+                <div class="timeline-wrapper">
+                    <div class="timeline-header">
+                        <div class="container-fluid p-0">
+                            <div class="row g-0 align-items-center">
+                                
+                                <div class="col-lg-6">
+                                    <div class="timeline-logo-area d-flex align-items-center">
+                                        <div class="timeline-logo">
+                                            <a href="index.html">
+                                                <img src="assets/images/logo/logoutecan2.png" alt="timeline logo">
+                                            </a>
+                                        </div>
+                                        <div class="timeline-tagline">
+                                            <h6 class="tagline">Bienvenido en Utefriend</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="col-lg-6">
+                                    <form action="index.html">
+                                    <div class="login-area">
+                                        <div class="row align-items-center">
+                                            <div class="col-12 col-sm">
+                                                <input id="correo1" type="text" placeholder="Correo" class="single-field">
+                                            </div>
+                                            <div class="col-12 col-sm">
+                                                <input id="password1" type="password" placeholder="Contraseña" class="single-field">
+                                            </div>
+                                            <div class="col-12 col-sm-auto">
+                                                <button class="login-btn" type="submit" onclick="login();">Iniciar Sesion</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     </form>
+                                </div>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-page-wrapper">
+                        <div class="container-fluid p-0">
+                            <div class="row g-0">
+                                <div class="col-lg-6 order-2 order-lg-1">
+                                    <div class="timeline-bg-content bg-img" data-bg="assets/images/timeline/adda-timeline.png">
+                                        <h3 class="timeline-bg-title"><!-- AQUI SE PUEDE COLOCAR UN TEXTO SOBRE IMAGEN --></h3>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 order-1 order-lg-2 d-flex align-items-center justify-content-center">
+                                    <div class="signup-form-wrapper">
+                                        <h1 class="create-acc text-center">Crea una cuenta</h1>
+                                        <div class="signup-inner text-center">
+                                            <h3 class="title">Bienvenido a Utefriend</h3>
+                                            <form class="signup-inner--form"  >
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <input id="correo" type="email" class="single-field" placeholder="Correo">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input id="nombre" type="text" class="single-field" placeholder="Nombres">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input id="apellido" type="text" class="single-field" placeholder="Apellidos">
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <input id="password" type="password" class="single-field" placeholder="Contraseña">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <select id="sexo" class="nice-select" name="sortby" placeholder="Sexo">
+                                                            <option value="Masculino">Masculino</option>
+                                                            <option value="Femenino">Femenino</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input id="edad" type="text" class="single-field" placeholder="Edad">
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <input id="estado" type="text" class="single-field" placeholder="Estado">
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <button class="submit-btn" type="submit" onclick="registroAlumno();"> Crear Cuenta</button>
+                                                    </div>
+                                                </div>
+                                                <h6 class="terms-condition">He leído y acepto el <a href="#">condiciones de uso</a></h6>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="listado">
+                        Alumnos:
+                        <ul id="alumnos" class="list-group">
+
+                        </ul>
+                        </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- JS
+            ============================================ -->
+            <!-- Logica de login-->
+            <!-- PouchDB-->
+            <script src="assets/js/pouchdb-7.2.1.min.js"></script>
+            <script src="assets/js/pouchdb.authentication.min.js"></script>
+            <script src="assets/js/app.js"></script>
+
+            <!-- Modernizer JS -->
+            <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
+            <!-- jQuery JS -->
+            <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+            <!-- Bootstrap JS -->
+            <script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
+            <!-- Slick Slider JS -->
+            <script src="assets/js/plugins/slick.min.js"></script>
+            <!-- nice select JS -->
+            <script src="assets/js/plugins/nice-select.min.js"></script>
+            <!-- audio video player JS -->
+            <script src="assets/js/plugins/plyr.min.js"></script>
+            <!-- perfect scrollbar js -->
+            <script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
+            <!-- light gallery js -->
+            <script src="assets/js/plugins/lightgallery-all.min.js"></script>
+            <!-- image loaded js -->
+            <script src="assets/js/plugins/imagesloaded.pkgd.min.js"></script>
+            <!-- isotope filter js -->
+            <script src="assets/js/plugins/isotope.pkgd.min.js"></script>
+            <!-- Main JS -->
+            <script src="assets/js/main.js"></script>
+            
+            
+            
+        </body>
+        
+        </html>
