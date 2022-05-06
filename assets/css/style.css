@@ -137,7 +137,7 @@ textarea:focus {
 
 ::selection {
     color: #fff;
-    background: #dc4734;
+    background: #09ae82;
 }
 
 ::-webkit-input-placeholder {
@@ -396,7 +396,7 @@ textarea:focus {
     -o-transition: 0.4s;
     transition: 0.4s;
     border-radius: 50%;
-    background-color: #dc4734;
+    background-color: #09ae82;
     -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
     box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
 }
@@ -947,7 +947,7 @@ only screen and (max-width: 767.98px) {
 
 .header-top-navigation ul li:hover a,
 .header-top-navigation ul li.active a {
-    color: #dc4734;
+    color: #09ae82;
 }
 
 .header-top-navigation ul li .message-dropdown {
@@ -2957,7 +2957,7 @@ only screen and (max-width: 767.98px) {
 }
 
 .friends-section .content-box.friends-zone .friend-list-view:hover {
-    background-color: #dc4734;
+    background-color: #09ae82;
 }
 
 .friend-list-view {

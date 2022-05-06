@@ -1,27 +1,40 @@
 
 var db = new PouchDB('pubicaciones');
-var remoteCouch = 'http://admon:admon@127.0.0.1:5984/publicaciones';
+var remoteCouch = 'http://admin:admin@127.0.0.1:5984/publicaciones';
 
 db.changes({
   since: 'now',
   live: true
 }).on('change', showPubli);
 
+//--------------------------------------------------
+              // imagen
+ 
+
+//----------------------------------------------
 
 
-
-
+// var input = document.querySelector('formFile');
 
 
 function registroPublic() {
+  var file = document.getElementById('formFile').files[0];
+  
   var Publicacion = {
     _id: new Date().toISOString(),
     public : document.getElementById('PubModal').value,
+    _attachments: {
+      "imagen": {
+        type: file.type,
+        data: file
+      }
+    }
    };
          db.put(Publicacion).then(function (result) {
           console.log("Todo bien");
           console.log(result);
         }).catch(function(err){
+          //console.log(file);
           console.log("algo salio mal");
           console.log(err);
         }
@@ -29,7 +42,7 @@ function registroPublic() {
         showPubli();   
   };
 
-
+//-------------------------------------------------------// 
       function showPubli() {
         db.allDocs({include_docs: true, attachments: true ,descending: true}).then(function(doc) {
           mostrarPubli(doc.rows);
@@ -38,6 +51,40 @@ function registroPublic() {
         });
       }
 
+      function deletPubli(puubliid) {
+        db.get(puubliid).then(function(puubli) {
+        console.log(puubli);
+        db.remove(puubli);
+        }).catch(function(err){
+          console.log(err);
+        });
+      }
+
+      function editPubli(puubliid) {
+        db.get(puubliid).then(function(doc) {
+        console.log(puubli);
+        doc.public = document.getElementById('PubModal').value;
+        return  db.put(doc);
+       
+        }).then(function(doc) {
+          console.log(doc);
+        }).catch(function(err){
+          console.log(err);
+
+        });
+      }
+      
+      db.get('mittens').then(function (doc) {
+        // update their age
+        doc.age = 4;
+        // put them back
+        return db.put(doc);
+      }).then(function () {
+        // fetch mittens again
+        return db.get('mittens');
+      }).then(function (doc) {
+        console.log(doc);
+      });
 
 
       function mostrarPubli(pubicaciones) {
@@ -45,9 +92,12 @@ function registroPublic() {
         ul.innerHTML = '';
         listado = '';
           pubicaciones.forEach(function(puubli) {
+            //console.log(puubli.doc._attachments.imagen.data);
             console.log(puubli.doc);
+            var fecha = new Date(puubli.doc._id).toLocaleString('es-MX');
             listado += 
       `<!-- post title start -->
+     
      <div class="card">
       <div class="post-title d-flex align-items-center">
           <!-- profile picture end -->
@@ -60,8 +110,9 @@ function registroPublic() {
           </div>
           <!-- profile picture end -->
           <div class="posted-author">
-              <h6 class="author"><a href="profile.html">merry watson</a></h6>
-              <span class="post-time">20 min ago</span>
+              <h6 class="author"><a href="profile.html">Utecan Candelaria</a></h6>
+              <span class="post-time">${puubli.doc._id.split('T')[0]}</span>
+              <!--// Hora: ${puubli.doc._id.split('T')[1].split('.')[0]}> -->
           </div>
           <div class="post-settings-bar">
               <span></span>
@@ -70,8 +121,8 @@ function registroPublic() {
               <div class="post-settings arrow-shape">
                   <ul>
                       <li><button>opcion</button></li>
-                      <li><button>Editar</button></li>
-                      <li><button>Eliminar</button></li>
+                      <li><button onclick="editPubli();" data-bs-toggle="modal">Editar</button></li>
+                      <li><button onclick="deletPubli('${puubli.doc._id}');">Eliminar</button></li>
                   </ul>
               </div>
           </div>
@@ -82,10 +133,10 @@ function registroPublic() {
               ${puubli.doc.public}
           </p>
           <div class="post-thumb-gallery">
-              <figure class="post-thumb img-popup">
-                  <a href="assets/images/post/post-1.jpg">
-                  <img src="assets/images/post/post-1.jpg" alt="post image">
-                  </a>
+              <figure class="post-thumb img-popup"> 
+              <a href="">
+              <img src="data:image/png;base64,${puubli.doc._attachments.imagen.data}" alt="post image">
+              </a>
               </figure>
           </div>
           <div class="post-meta">
@@ -114,6 +165,9 @@ function registroPublic() {
 });
 ul.innerHTML = listado;
 }
+
+
+
 
 showPubli();
 
